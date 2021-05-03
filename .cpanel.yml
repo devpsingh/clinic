@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/theprojectdevelo/clinic/
+    - /bin/cp * $DEPLOYPATH
+    
