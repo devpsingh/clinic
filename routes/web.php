@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
-
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/doctors',[App\Http\Controllers\Doctor::class,'index'])->name('doctor');
 Route::get('/consult/{slug}',[App\Http\Controllers\Consult::class,'index'])->name('consult');
@@ -48,5 +48,6 @@ Route::namespace("Admin")->prefix('admin')->group(function(){
         Route::post('/login',[App\Http\Controllers\Doctor\Auth\LoginController::class, 'login']);
         Route::post('logout',[App\Http\Controllers\Doctor\Auth\LoginController::class, 'logout'])->name('doctor.logout');
         Route::get('/create/profile',[App\Http\Controllers\Doctor\CreateProfile::class, 'index'])->name('doctor.create_profile');
+        Route::get('/patient/schedule/{slug}',[App\Http\Controllers\Doctor\ScheduleController::class,'index'])->name('schedule');
     });
    });

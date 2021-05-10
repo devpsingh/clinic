@@ -22,17 +22,8 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  @livewire('doctor.header')
-
- 
-@if($message = Session::get('inf'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-  
-  @livewire('doctor.home')
+  @livewire('doctor.header')  
+  @livewire('doctor.schedule')
 <script src="{{asset('js/app.js')}}"></script>
 
 @livewireScripts
@@ -43,53 +34,21 @@
   </script>
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
    <script type="text/javascript">
-//var a="{{$event}}";
-var disableDates = [];
-@php
-function dateDiff($date1, $date2)
-{
-   $date1_ts = strtotime($date1);
-   $date2_ts = strtotime($date2);
-   $diff = $date2_ts - $date1_ts;
-   return round($diff / 86400);
-}
-@endphp
-@if($event)
-
-   @foreach($event as $ev)
-        
-        @php
-           $days = dateDiff($ev->eventdate,$ev->eventdateto);
-           $newdate=array();
-            for($i=1;$i<=$days;$i++)
-            {
-               $newdate[] = date('Y-m-d',strtotime($ev->eventdate.'+'.$i.'days'));
-            
-            }
-         //print_r($newdate);
-        @endphp
-        @foreach($newdate as $dt)
-             disableDates.push("{{$dt}}");
-         @endforeach
-        @endforeach
-      @endif
- 
-        
   
     $('#datefrom').datepicker({ 
         startDate: new Date(),
         format: 'yyyy-mm-dd',
-        datesDisabled: disableDates,
+        //datesDisabled: disableDates,
         autoclose: true,
         daysOfWeekDisabled: [0], //sundays are disabled
     });
-    $('#dateto').datepicker({ 
-        startDate: new Date(),
-        format: 'yyyy-mm-dd',
-        datesDisabled: disableDates,
-        autoclose: true,
+    // $('#dateto').datepicker({ 
+    //     startDate: new Date(),
+    //     format: 'yyyy-mm-dd',
+    //     datesDisabled: disableDates,
+    //     autoclose: true,
       
-    });
+    // });
    
 </script>
 

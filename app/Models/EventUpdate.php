@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DoctorEvent extends Model
+class EventUpdate extends Model
 {
     use HasFactory;
-    protected $fillable=['email','title','desc','eventdate','eventdateto'];
+    protected $fillable=['updated_date','updated_timeslot','dr_id'];
 }

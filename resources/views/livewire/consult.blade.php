@@ -228,17 +228,19 @@
         <form>
             <div class="form-group">
               <label for="name">Patient name</label>
-              <input type="text" class="form-control" id="name" wire:model.defer="name" aria-describedby="nameHelp" placeholder="Enter Patient name">
+              <input type="text" class="form-control" id="name" wire:model="name" aria-describedby="nameHelp" placeholder="Enter Patient name">
             </div>
+            @error('name') <span class="text-danger">{{$message}}</span> @enderror
             <div class="row">
               <div class="form-group col-md-7">
                 <label for="mobile">Enter mobile number</label>
-                <input type="Number" class="form-control" id="mobile" wire:model.defer="mobile" placeholder="Mobile">
+                <input type="Number" class="form-control" id="mobile" wire:model="mobile" placeholder="Mobile">
+                @error('mobile') <span class="text-danger">{{$message}}</span> @enderror
               </div>
               <div class="form-group col-md-5">
                   <label for="date">Select date</label>
                 <div class='input-group date'  >
-                    <input type='text' class="form-control" id="date" placeholder="YYYY-MM-DD" wire:model.defer="date" 
+                    <input type='text' class="form-control" id="date" placeholder="YYYY-MM-DD" wire:model="date" 
                     data-provide="datepicker"  data-date-today-highlight="true" 
                     autocomplete="off" 
                     onchange="this.dispatchEvent(new InputEvent('input'))"
@@ -247,26 +249,35 @@
                         <span class="fas fa-calendar"></span>
                     </span>
                 </div>
+                @error('date') <span class="text-danger">{{$message}}</span> @enderror
             </div>
             </div>
-            <select class="form-control" wire:model.defer="time">
+            <select class="form-control" wire:model="time">
               <option>Select time slot</option>
-              
-              @if(!empty($details[0]->timeslot))
-                @foreach(json_decode($details[0]->timeslot) as $slot)
-                  <option value="{{$slot}}">{{$slot}}</option>
+              @if(count($updated_time)>0)
+                @foreach($updated_time as $val)
+                  @foreach(json_decode($val->updated_timeslot) as $timeslot)
+                  <option value="{{$timeslot}}">{{$timeslot}}</option>
+                    @endforeach
                 @endforeach
               @else
-              <option value="10 AM - 11 AM" >10 AM to 11 AM</option>
-              <option value="11 AM - 12 Noon" >11 AM to 12 Noon</option>
-              <option value="12 Noon - 1 PM" >12 Noon to 1 PM</option>
-              <option value="5 PM - 6 PM" >5 PM to 6 PM</option>
-              <option value="6 PM - 7 PM" >6 PM to 7 PM</option>
-              <option value="7 PM - 8 PM" >7 PM to 8 PM</option>
-              <option value="8 PM - 9 PM" >8 PM to 9 PM</option>
-              <option value="9 PM - 10 PM" >9 PM to 10 PM</option>
-              @endif
+                  @if(!empty($details[0]->timeslot))
+                    @foreach(json_decode($details[0]->timeslot) as $slot)
+                      <option value="{{$slot}}">{{$slot}}</option>
+                    @endforeach
+                  @else
+                  <option value="10 AM - 11 AM" >10 AM to 11 AM</option>
+                  <option value="11 AM - 12 Noon" >11 AM to 12 Noon</option>
+                  <option value="12 Noon - 1 PM" >12 Noon to 1 PM</option>
+                  <option value="5 PM - 6 PM" >5 PM to 6 PM</option>
+                  <option value="6 PM - 7 PM" >6 PM to 7 PM</option>
+                  <option value="7 PM - 8 PM" >7 PM to 8 PM</option>
+                  <option value="8 PM - 9 PM" >8 PM to 9 PM</option>
+                  <option value="9 PM - 10 PM" >9 PM to 10 PM</option>
+                  @endif
+                @endif
             </select>
+            @error('time') <span class="text-danger">{{$message}}</span> @enderror
             <ul class="nav d-flex justify-content-center p-3">
               <li class="nav-item p-2">
                 <div class="form-check">

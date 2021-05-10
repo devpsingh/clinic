@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
         <!-- Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         @livewireStyles
         <style>
@@ -451,374 +452,16 @@ background:#eee;
 }
 
 
-//for calendar
-/*
-.content {
-    overflow: none;
-    max-width: 790px;
-    padding: 0px 0;
-    height: 500px;
-    position: relative;
-    margin: 20px auto;
-    background: #52A0FD;
-    background: -moz-linear-gradient(right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: -webkit-linear-gradient(right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: linear-gradient(to left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);    
-    border-radius: 3px;
-    box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -moz-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -webkit-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-
-.events-container {
-    overflow-y: scroll;
-    height: 100%;
-    float: right;
-    margin: 0px auto; 
-    font: 13px Helvetica, Arial, sans-serif; 
-    display: inline-block; 
-    padding: 0 10px;
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-}
-.events-container:after{
-    clear:both;
-}
-.event-card {
-    padding: 20px 0;
-    width: 350px;
-    margin: 20px auto;
-    display: block;
-    background: #fff;
-    border-left: 10px solid #52A0FD;
-    border-radius: 3px;
-    box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -moz-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    -webkit-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.event-count, .event-name, .event-cancelled {
-    display: inline;
-    padding: 0 10px;
-    font-size: 1rem;
-}
-.event-count {
-    color: #52A0FD;
-    text-align: right;
-}
-.event-name {
-    padding-right:0;
-    text-align: left;
-}
-.event-cancelled {
-    color: #FF1744;
-    text-align: right;
-}
-
-
-.calendar-container  { 
-    float: left;
-    position: relative;
-    margin: 0px auto; 
-    height: 100%;
-    background: #fff;
-    font: 13px Helvetica, Arial, san-serif; 
-    display: inline-block; 
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
-}
-.calendar-container:after{
-    clear:both;
-}
-.calendar {
-    display: table;
-}
-
-
-.year-header { 
-    background: #52A0FD;
-    background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: -webkit-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);    
-    font-family: Helvetica;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    height: 40px; 
-    text-align: center;
-    position: relative; 
-    color:#fff; 
-    border-top-left-radius: 3px;
-} 
-.year-header span { 
-    display:inline-block; 
-    font-size: 20px;
-    line-height:40px; 
-}
-.left-button, .right-button { 
-    cursor: pointer;
-    width:28px; 
-    text-align:center; 
-    position:absolute; 
-} 
-.left-button { 
-    left:0; 
-    -webkit-border-top-left-radius: 5px; 
-    -moz-border-radius-topleft: 5px; 
-    border-top-left-radius: 5px; 
-} 
-.right-button { 
-    right:0; 
-    top:0; 
-    -webkit-border-top-right-radius: 5px; 
-    -moz-border-radius-topright: 5px; 
-    border-top-right-radius: 5px; 
-} 
-.left-button:hover {
-    background: #3FADFF;
-}
-.right-button:hover { 
-    background: #00C1FF;
-}
-
-
-.button{
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
-    font-size: 1rem;
-    border-radius: 25px;
-    padding: 0.65rem 1.9rem;
-    transition: .2s ease all;
-    color: white;
-    border: none;
-    box-shadow: -1px 10px 20px #9BC6FD;
-    background: #52A0FD;
-    background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: -webkit-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-    background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-}
-#cancel-button {
-    box-shadow: -1px 10px 20px #FF7DAE;
-    background: #FF1744;
-    background: -moz-linear-gradient(left,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
-    background: -webkit-linear-gradient(left,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
-    background: linear-gradient(to right,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
-}
-#add-button {
-    display: block;
-    position: absolute;
-    right:20px;
-    bottom: 20px;
-}
-#add-button:hover, #ok-button:hover, #cancel-button:hover {
-    transform: scale(1.03);
-}
-#add-button:active, #ok-button:active, #cancel-button:active {
-    transform: translateY(3px) scale(.97);
-}
-
-
-.days-table, .dates-table, .months-table { 
-    border-collapse:separate; 
-    text-align: center;
-} 
-.day { 
-    height: 26px;
-    width: 26px;
-    padding: 0 10px;
-    line-height: 26px; 
-    border: 2px solid transparent;
-    text-transform:uppercase; 
-    font-size:90%; 
-    color:#9e9e9e; 
-} 
-.month {
-    cursor: default;
-    height: 26px;
-    width: 26px;
-    padding: 0 2px;
-    padding-top:10px;
-    line-height: 26px; 
-    text-transform:uppercase; 
-    font-size: 11px; 
-    color:#9e9e9e; 
-    transition: all 250ms;
-}
-.active-month {
-    font-weight: bold;
-    font-size: 14px;
-    color: #FF1744;
-    text-shadow: 0 1px 4px RGBA(255, 50, 120, .8);
-}
-.month:hover {
-    color: #FF1744;
-    text-shadow: 0 1px 4px RGBA(255, 50, 120, .8);
-}
-
-
-.table-date {
-    cursor: default;
-    color:#2b2b2b; 
-    height:26px;
-    width: 26px;
-    font-size: 15px;
-    padding: 10px;
-    line-height:26px; 
-    text-align:center; 
-    border-radius: 50%;
-    border: 2px solid transparent;
-    transition: all 250ms;
-}
-.table-date:not(.nil):hover { 
-    border-color: #FF1744;
-    box-shadow: 0 2px 6px RGBA(255, 50, 120, .9);
-}
-.event-date {
-    border-color:#52A0FD;
-    box-shadow: 0 2px 8px RGBA(130, 180, 255, .9);
-}
-.active-date{ 
-    background: #FF1744;
-    box-shadow: 0 2px 8px RGBA(255, 50, 120, .9);
-    color: #fff;
-}
-.event-date.active-date {
-    background: #52A0FD;
-    box-shadow: 0 2px 8px RGBA(130, 180, 255, .9);
-}
-
-
-.dialog{
-    z-index: 5;
-    background: #fff;
-    position:absolute;
-    width:415px;
-    height: 500px;
-    left:387px;
-    border-top-right-radius:3px;
-    border-bottom-right-radius: 3px;
-    display:none;
-    border-left: 1px #aaa solid;
-}
-.dialog-header {
-    margin: 20px;
-    color:#333;
-    text-align: center;
-}
-.form-container {
-    margin-top:25%;
-}
-.form-label {
-    color:#333;
-}
-.input {
-    border:none;
-    background: none;
-    border-bottom: 1px #aaa solid;
-    display:block;
-    margin-bottom:50px;
-    width: 200px;
-    height: 20px;
-    text-align: center;
-    transition: border-color 250ms;
-}
-.input:focus {
-    outline:none;
-    border-color: #00C9FB;
-}
-.error-input {
-    border-color: #FF1744;
-}
-
-
-@media only screen and (max-width: 780px) {
-    .content {
-        overflow: visible;
-        position:relative;
-        max-width: 100%;
-        width: 370px;
-        height: 100%;
-        background: #52A0FD;
-        background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-        background: -webkit-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
-        background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);  
-    }
-    .dialog {
-        width:370px;
-        height: 450px;
-        border-radius: 3px;
-        top:0;
-        left:0;
-    }
-    .events-container {
-        float:none;
-        overflow: visible;
-        margin: 0 auto;
-        padding: 0;
-        display: block;
-        left: 0;
-        border-radius: 3px;
-    }
-
-    .calendar-container {
-        float: none;
-        padding: 0;
-        margin: 0 auto;
-        margin-right: 0;
-        display: block;
-        left: 0;
-        border-radius: 3px;
-        box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        -moz-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        -webkit-box-shadow: 3px 8px 16px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    }
-}
-
-
-@media only screen and (max-width: 400px) {
-    .content, .events-container, .year-header, .calendar-container {
-        width: 320px;
-    }
-    .dialog {
-        width: 320px;
-    }
-    .months-table {
-        display: block;
-        margin: 0 auto;
-        width: 320px;
-    }
-    .event-card {
-        width: 300px;
-    }
-    .day {
-        padding: 0 7px;
-    }
-    .month {
-        display: inline-block;
-        padding: 10px 10px;
-        font-size: .8rem;
-    }
-    .table-date {
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-    }
-    .event-name, .event-count, .event-cancelled {
-        font-size: .8rem;
-    }
-    .add-button{
-        bottom: 10px;
-        right: 10px;
-        padding: 0.5rem 1.5rem;
-    }
-} */
-
 
      </style>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
+     
+    <style>
+    .datepicker table tr td.disabled
+    {
+    background-color:red !imortant;
+    }
+    
+    </style>
     </head>
     <body class="bg-light font-sans antialiased">
      @livewire('header')
@@ -836,11 +479,51 @@ background:#eee;
    <script type="text/javascript">
     
     var disableDates = [];
+    @php
+function dateDiff($date1, $date2)
+{
+   $date1_ts = strtotime($date1);
+   $date2_ts = strtotime($date2);
+   $diff = $date2_ts - $date1_ts;
+   return round($diff / 86400);
+}
+@endphp
 @if($event)
+
    @foreach($event as $ev)
-    disableDates.push("{{$ev->eventdate}}");
-   @endforeach
-@endif
+        
+        @php
+           $days = dateDiff($ev->eventdate,$ev->eventdateto);
+           $newdate=array();
+            for($i=1;$i<=$days;$i++)
+            {
+               $newdate[] = date('Y-m-d',strtotime($ev->eventdate.'+'.$i.'days'));
+            
+            }
+         //print_r($newdate);
+        @endphp
+        @foreach($newdate as $dt)
+             disableDates.push("{{$dt}}");
+         @endforeach
+        @endforeach
+      @endif
+//removing dates if event updated by doctor
+function removeItem(array, item){
+    for(var i in array){
+        if(array[i]==item){
+            array.splice(i,1);
+            break;
+        }
+    }
+}
+
+      @if(count($updatedEvents)>0)
+            @foreach($updatedEvents as $val)
+                    removeItem(disableDates,'{{$val->updated_date}}');
+                    console.log({{$val->updated_date}});
+            @endforeach
+     @endif
+
     $('#date').datepicker({ 
         startDate: new Date(),
         format: 'yyyy-mm-dd',

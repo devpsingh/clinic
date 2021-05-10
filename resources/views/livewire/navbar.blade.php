@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{route('welcome')}}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -36,7 +36,7 @@
                 @if (Route::has('login'))
                     <div class="">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-muted">Dashboard</a>
+                            <a href="{{ url('/home') }}" class="text-muted">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}" class="text-muted"><i class="fas fa-user"></i> Log in</a>
 

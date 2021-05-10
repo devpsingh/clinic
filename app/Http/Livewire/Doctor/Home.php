@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Doctor;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Doctor as Dr;
 use App\Models\DoctorEvent as DE;
@@ -16,20 +16,29 @@ class Home extends Component
     public $title=null;
     public $desc=null;
     public $tab='list';
-    public $eventdate=null;
+    public $eventdatefrom=null;
+    public $eventdateto=null;
+    public $email;
     public function render()
     {
+        $this->email = Auth::user()->email;
         $drdetail=Dr::where('email',Auth::user()->email)->get();
         $event = DE::where('email',Auth::user()->email)->get();
-       // dd($drdetail);
-        return view('livewire.doctor.home',['drdetail'=>$drdetail,'event'=>$event]);
+              
+        return view('livewire.doctor.home',
+        [
+            'drdetail'=>$drdetail,
+            'event'=>$event,
+            
+        ]);
     }
     public function updated($field)
     {
             $this->validateOnly($field,[
                 'title'=>'required|min:3|max:20',
                 'desc'=>'required|min:3|max:100',
-                'eventdate'=>'required',
+                'eventdatefrom'=>'required',
+                'eventdateto'=>'required',
             ]);
     }
     public function addEvent()
@@ -37,17 +46,18 @@ class Home extends Component
         $validation=$this->validate([
             'title'=>'required|min:3|max:20',
             'desc'=>'required|min:3|max:100',
-            'eventdate'=>'required',
-            
+            'eventdatefrom'=>'required',
+            'eventdateto'=>'required',
                ]);
                
                if($validation)
                {
                    DE::create([
-                       'email'=>Auth::user()->email,
+                       'email'=>$this->email,
                        'title'=>$this->title,
                        'desc'=>$this->desc,
-                       'eventdate'=>$this->eventdate,
+                       'eventdate'=>$this->eventdatefrom,
+                       'eventdateto'=>$this->eventdateto,
                        ]);
                }
                return back()->with('success','Event addedd successfully');
